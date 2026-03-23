@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Korea — Spring 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #111111;
+      --surface: #1c1c1c;
+      --border: #2e2e2e;
+      --text: #e8e2d9;
+      --muted: #8a8278;
+      --accent: #c9a96e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to bottom, #0a0a0a, var(--bg));
+    }
+
+    .hero-kicker {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-intro {
+      max-width: 560px;
+      font-size: 1rem;
+      color: var(--text);
+      opacity: 0.85;
+      line-height: 1.9;
+    }
+
+    .scroll-hint {
+      margin-top: 3rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    /* ── CHAPTER ── */
+    .chapter {
+      padding: 5rem 0 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .chapter-header {
+      text-align: center;
+      padding: 0 2rem 3rem;
+    }
+
+    .chapter-number {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .chapter-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .chapter-subtitle {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ── PHOTO LAYOUTS ── */
+    .photo-grid {
+      display: grid;
+      gap: 4px;
+      padding: 0 4px;
+    }
+
+    .photo-grid.single {
+      grid-template-columns: 1fr;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .photo-grid.two-col {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .photo-grid.three-col {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .photo-grid.hero-pair {
+      grid-template-columns: 3fr 2fr;
+    }
+
+    @media (max-width: 700px) {
+      .photo-grid.two-col,
+      .photo-grid.three-col,
+      .photo-grid.hero-pair {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-grid.row-tall .photo-block { height: 70vw; max-height: 420px; }
+      .photo-grid.row-medium .photo-block { height: 65vw; max-height: 380px; }
+      .photo-grid.row-short .photo-block { height: 55vw; max-height: 300px; }
+
+      .chapter { padding: 3rem 0 2rem; }
+      .chapter-header { padding: 0 1.5rem 2rem; }
+
+      .hero { padding: 3rem 1.5rem; }
+      .hero h1 { font-size: 2.8rem; }
+    }
+
+    .photo-block {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .photo-block img,
+    .photo-block video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-block.portrait img {
+      object-position: center top;
+    }
+
+    /* Fixed-height rows */
+    .photo-grid.row-tall .photo-block { height: 80vh; max-height: 700px; }
+    .photo-grid.row-medium .photo-block { height: 55vh; max-height: 550px; }
+    .photo-grid.row-short .photo-block { height: 40vh; max-height: 400px; }
+
+    .photo-block.auto img,
+    .photo-block.auto video {
+      height: auto;
+      object-fit: initial;
+    }
+
+    /* Caption */
+    .caption {
+      text-align: center;
+      padding: 0.6rem 1rem 0.2rem;
+      font-size: 0.8rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .section-spacer {
+      height: 3rem;
+    }
+
+    /* Video controls */
+    video { cursor: pointer; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 2.5rem auto;
+      opacity: 0.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-kicker">A Photo Journal</div>
+    <h1>Korea</h1>
+    <p class="hero-sub">Spring 2026 &nbsp;·&nbsp; Ben Waldo</p>
+    <p class="hero-intro">
+      In early 2026 I was sent to Osan Air Base, South Korea on a military assignment.
+      Between work, I had the chance to explore — fortresses, palaces, war memorials,
+      street markets lit at night, and cities that surprised me at every turn.
+      This is what I saw.
+    </p>
+    <div class="scroll-hint">Scroll to begin</div>
+  </section>
+
+
+  <!-- CHAPTER 1: OSAN -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter One</div>
+      <h2 class="chapter-title">Osan Air Base</h2>
+      <p class="chapter-subtitle">Pyeongtaek, Gyeonggi Province</p>
+    </div>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <img src="converted/IMG_3298.jpg" alt="Barracks tent at Osan" />
+      </div>
+      <p class="caption">Home for the duration — tent barracks on base.</p>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-tall">
+      <div class="photo-block">
+        <img src="converted/IMG_3299.jpg" alt="Songtan street with jet sculpture" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3301.jpg" alt="Songtan lantern street in the rain" />
+      </div>
+    </div>
+    <p class="caption">Songtan — the neighborhood just outside the base gate. Rainy first evening.</p>
+  </section>
+
+
+  <!-- CHAPTER 2: HWASEONG FORTRESS -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Two</div>
+      <h2 class="chapter-title">Hwaseong Fortress</h2>
+      <p class="chapter-subtitle">Suwon · UNESCO World Heritage Site</p>
+    </div>
+
+    <p style="text-align:center; max-width:540px; margin:0 auto 3rem; padding:0 1rem; font-size:0.95rem; color:var(--muted); font-style:italic;">
+      Built in 1796 by King Jeongjo of the Joseon dynasty, Hwaseong Fortress stretches
+      nearly 6 km around the city of Suwon. I visited at dusk and stayed into the night.
+    </p>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <img src="converted/IMG_3314.jpg" alt="Hwaseong Fortress gate at dusk" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3316.jpg" alt="City view from the fortress wall" />
+      </div>
+    </div>
+    <p class="caption">The Paldalmun gate at dusk &nbsp;·&nbsp; Looking out over Suwon from the fortress walls.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid three-col row-medium">
+      <div class="photo-block">
+        <img src="converted/IMG_3318.jpg" alt="Fortress pavilion at dusk" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3319.jpg" alt="View through the pavilion roofline" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3326.jpg" alt="Illuminated pagoda at night" />
+      </div>
+    </div>
+    <p class="caption">The pavilions light up as the sun goes down.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-tall">
+      <div class="photo-block">
+        <img src="converted/IMG_3330.jpg" alt="Hwaseong pagoda lit at night" />
+      </div>
+      <div class="photo-block">
+        <video src="converted/IMG_3332.mp4" controls playsinline muted loop></video>
+      </div>
+    </div>
+    <p class="caption">Hwaseong at night.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <video src="converted/IMG_3333.mp4" controls playsinline></video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CHAPTER 3: FOOD & FRIENDS -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Three</div>
+      <h2 class="chapter-title">Food & Friends</h2>
+      <p class="chapter-subtitle">Korean BBQ · Specialty Cafés · Night Streets</p>
+    </div>
+
+    <div class="photo-grid hero-pair row-tall">
+      <div class="photo-block">
+        <img src="converted/IMG_3338.jpg" alt="Korean BBQ dinner" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3353.jpg" alt="Night street scene" />
+      </div>
+    </div>
+    <p class="caption">Korean BBQ — grilled galbi with banchan and soju &nbsp;·&nbsp; The streets at night.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <img src="converted/IMG_3347.jpg" alt="Specialty café drink" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3348.jpg" alt="With colleagues at the café" />
+      </div>
+    </div>
+    <p class="caption">Korea takes its cafés seriously.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <video src="converted/IMG_3358.mp4" controls playsinline></video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CHAPTER 4: THE SED -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Four</div>
+      <h2 class="chapter-title">The Work</h2>
+      <p class="chapter-subtitle">Korea Air and Space Operations Center</p>
+    </div>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <img src="converted/IMG_3346.JPG" alt="Group photo at the Korea Air and Space Operations Center" />
+      </div>
+      <p class="caption">The Korea Air and Space Operations Center — the reason for the trip.</p>
+    </div>
+  </section>
+
+
+  <!-- CHAPTER 5: SEOUL — GYEONGBOKGUNG -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Five</div>
+      <h2 class="chapter-title">Seoul</h2>
+      <p class="chapter-subtitle">Gyeongbokgung Palace</p>
+    </div>
+
+    <p style="text-align:center; max-width:540px; margin:0 auto 3rem; padding:0 1rem; font-size:0.95rem; color:var(--muted); font-style:italic;">
+      Built in 1395, Gyeongbokgung was the primary palace of the Joseon dynasty.
+      I happened to arrive during the Royal Guard Changing Ceremony.
+    </p>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <img src="converted/IMG_3373.jpg" alt="Gwanghwamun Gate" />
+      </div>
+      <p class="caption">Gwanghwamun — the main gate of Gyeongbokgung Palace.</p>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-tall">
+      <div class="photo-block">
+        <img src="converted/IMG_3380.jpg" alt="Royal Guard Changing Ceremony" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3381.jpg" alt="Full view of the ceremony with Bugaksan mountain" />
+      </div>
+    </div>
+    <p class="caption">The Royal Guard Changing Ceremony — held in the main courtyard with Bugaksan mountain behind.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <img src="converted/IMG_3387.jpg" alt="Gyeonghoeru Pavilion" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3389.jpg" alt="Hyangwonjeong Pavilion on the pond" />
+      </div>
+    </div>
+    <p class="caption">Gyeonghoeru Pavilion &nbsp;·&nbsp; Hyangwonjeong Pavilion — a small island in the palace gardens.</p>
+  </section>
+
+
+  <!-- CHAPTER 6: NAMSAN -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Six</div>
+      <h2 class="chapter-title">Namsan Mountain</h2>
+      <p class="chapter-subtitle">N Seoul Tower · The View from Above</p>
+    </div>
+
+    <div class="photo-grid hero-pair row-tall">
+      <div class="photo-block">
+        <img src="converted/IMG_3399.jpg" alt="Panoramic view of Seoul from Namsan" />
+      </div>
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3397.jpg" alt="N Seoul Tower" />
+      </div>
+    </div>
+    <p class="caption">Seoul from Namsan Mountain &nbsp;·&nbsp; N Seoul Tower, 480 meters above sea level.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <video src="converted/IMG_3402.mp4" controls playsinline></video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CHAPTER 7: WAR MEMORIAL -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Seven</div>
+      <h2 class="chapter-title">War Memorial of Korea</h2>
+      <p class="chapter-subtitle">Seoul · Yongsan</p>
+    </div>
+
+    <p style="text-align:center; max-width:540px; margin:0 auto 3rem; padding:0 1rem; font-size:0.95rem; color:var(--muted); font-style:italic;">
+      As an Air Force officer stationed at a base that owes its existence to the Korean War,
+      this one felt personal. Over 36,000 Americans died here between 1950 and 1953.
+    </p>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <img src="converted/IMG_3405.jpg" alt="War Memorial obelisk" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3406.jpg" alt="Brothers Statue" />
+      </div>
+    </div>
+    <p class="caption">The memorial tower &nbsp;·&nbsp; The Brothers Statue — an ROK and North Korean soldier embracing, symbolizing the hope for reunification.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <img src="converted/IMG_3408.jpg" alt="Tank display with N Seoul Tower in background" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3410.jpg" alt="Missile and weapons display" />
+      </div>
+    </div>
+    <p class="caption">The outdoor equipment display — decades of hardware, with N Seoul Tower visible in the background.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <img src="converted/IMG_3417.jpg" alt="Geobukseon Turtle Ship replica" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3419.jpg" alt="Korean War era rifles" />
+      </div>
+    </div>
+    <p class="caption">A full-scale replica of the Geobukseon (Turtle Ship), Admiral Yi Sun-sin's ironclad warship from 1592 &nbsp;·&nbsp; Korean War-era rifles.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <video src="converted/IMG_3423.mp4" controls playsinline></video>
+      </div>
+      <div class="photo-block">
+        <video src="converted/IMG_3434.mp4" controls playsinline></video>
+      </div>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <video src="converted/IMG_3436.mp4" controls playsinline></video>
+      </div>
+      <div class="photo-block">
+        <video src="converted/IMG_3441.mp4" controls playsinline></video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CHAPTER 8: SEOUL — AROUND THE CITY -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Eight</div>
+      <h2 class="chapter-title">Seoul</h2>
+      <p class="chapter-subtitle">Dongdaemun · Myeongdong · Around the City</p>
+    </div>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <img src="converted/IMG_3452.jpg" alt="Baskin Robbins 27 Cubes ice cream" />
+      </div>
+      <p class="caption">Korea's Baskin Robbins sells ice cream shaped like a Rubik's cube — 27 individual flavors in one block.</p>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-tall">
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3459.jpg" alt="Modern Seoul architecture" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3460.jpg" alt="Dongdaemun Design Plaza" />
+      </div>
+    </div>
+    <p class="caption">Modern Seoul &nbsp;·&nbsp; Dongdaemun Design Plaza — designed by Zaha Hadid, opened 2014.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-tall">
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3486.jpg" alt="Myeongdong Cathedral at night" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3489.jpg" alt="Myeongdong shopping street at night" />
+      </div>
+    </div>
+    <p class="caption">Myeongdong Cathedral — Seoul's oldest Catholic church, built 1898 &nbsp;·&nbsp; Myeongdong at night.</p>
+  </section>
+
+
+  <!-- CHAPTER 9: DAEGU -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Nine</div>
+      <h2 class="chapter-title">Daegu</h2>
+      <p class="chapter-subtitle">South Korea's Fourth-Largest City</p>
+    </div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3458.jpg" alt="Statue of a Korean general" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3462.jpg" alt="Sunset over Daegu" />
+      </div>
+    </div>
+    <p class="caption">A statue honoring Korean military history &nbsp;·&nbsp; Sunset over Daegu.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid three-col row-medium">
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3470.jpg" alt="Stone lion at a historical site" />
+      </div>
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3472.jpg" alt="Statue of a historical figure" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3480.jpg" alt="Traditional nongak performance" />
+      </div>
+    </div>
+    <p class="caption">A stone haetae guardian &nbsp;·&nbsp; A historical monument &nbsp;·&nbsp; Traditional nongak performance in the city square.</p>
+  </section>
+
+
+  <!-- FOOTER -->
+  <div class="divider"></div>
+  <footer>
+    <p>Korea &nbsp;·&nbsp; Spring 2026 &nbsp;·&nbsp; Benjamin Waldo</p>
+  </footer>
+
+</body>
+</html>
