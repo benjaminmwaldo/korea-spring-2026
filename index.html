@@ -196,14 +196,20 @@
       letter-spacing: 0.03em;
     }
 
-    .section-spacer {
-      height: 3rem;
+    .section-spacer { height: 3rem; }
+
+    .body-text {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
     }
 
-    /* Video controls */
     video { cursor: pointer; }
 
-    /* ── DIVIDER ── */
     .divider {
       width: 40px;
       height: 1px;
@@ -212,7 +218,6 @@
       opacity: 0.5;
     }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 3rem 2rem;
@@ -232,9 +237,9 @@
     <h1>Korea</h1>
     <p class="hero-sub">Spring 2026 &nbsp;·&nbsp; Ben Waldo</p>
     <p class="hero-intro">
-      In early 2026 I was sent to Osan Air Base, South Korea on a military assignment.
+      In early 2026 I was sent to Osan Air Base, South Korea on a military TDY.
       Between work, I had the chance to explore — fortresses, palaces, war memorials,
-      street markets lit at night, and cities that surprised me at every turn.
+      late-night streets, karaoke rooms, and a country that surprised me at every turn.
       This is what I saw.
     </p>
     <div class="scroll-hint">Scroll to begin</div>
@@ -251,34 +256,46 @@
 
     <div class="photo-grid single">
       <div class="photo-block auto">
-        <img src="converted/IMG_3298.jpg" alt="Barracks tent at Osan" />
+        <img src="converted/IMG_3298.jpg" alt="Tent barracks at Osan" />
       </div>
-      <p class="caption">Home for the duration — tent barracks on base.</p>
+      <p class="caption">Home for the TDY — a tent with cots. Honestly, it wasn't bad at all.</p>
+    </div>
+  </section>
+
+
+  <!-- CHAPTER 2: SONGTAN -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Two</div>
+      <h2 class="chapter-title">Songtan Entertainment District</h2>
+      <p class="chapter-subtitle">Just outside the gate</p>
     </div>
 
-    <div class="section-spacer"></div>
+    <p class="body-text">
+      Songtan is the neighborhood right outside Osan's main gate — the place the entire base goes to eat, shop, and go out. We spent a lot of evenings here.
+    </p>
 
     <div class="photo-grid two-col row-tall">
       <div class="photo-block">
-        <img src="converted/IMG_3299.jpg" alt="Songtan street with jet sculpture" />
+        <img src="converted/IMG_3299.jpg" alt="Songtan street with jet sculpture arch" />
       </div>
       <div class="photo-block">
         <img src="converted/IMG_3301.jpg" alt="Songtan lantern street in the rain" />
       </div>
     </div>
-    <p class="caption">Songtan — the neighborhood just outside the base gate. Rainy first evening.</p>
+    <p class="caption">Rainy first evening in Songtan.</p>
   </section>
 
 
-  <!-- CHAPTER 2: HWASEONG FORTRESS -->
+  <!-- CHAPTER 3: HWASEONG FORTRESS -->
   <section class="chapter">
     <div class="chapter-header">
-      <div class="chapter-number">Chapter Two</div>
+      <div class="chapter-number">Chapter Three</div>
       <h2 class="chapter-title">Hwaseong Fortress</h2>
       <p class="chapter-subtitle">Suwon · UNESCO World Heritage Site</p>
     </div>
 
-    <p style="text-align:center; max-width:540px; margin:0 auto 3rem; padding:0 1rem; font-size:0.95rem; color:var(--muted); font-style:italic;">
+    <p class="body-text">
       Built in 1796 by King Jeongjo of the Joseon dynasty, Hwaseong Fortress stretches
       nearly 6 km around the city of Suwon. I visited at dusk and stayed into the night.
     </p>
@@ -330,23 +347,27 @@
   </section>
 
 
-  <!-- CHAPTER 3: FOOD & FRIENDS -->
+  <!-- CHAPTER 4: FOOD -->
   <section class="chapter">
     <div class="chapter-header">
-      <div class="chapter-number">Chapter Three</div>
-      <h2 class="chapter-title">Food & Friends</h2>
-      <p class="chapter-subtitle">Korean BBQ · Specialty Cafés · Night Streets</p>
+      <div class="chapter-number">Chapter Four</div>
+      <h2 class="chapter-title">Korean Food</h2>
+      <p class="chapter-subtitle">An honest assessment</p>
     </div>
+
+    <p class="body-text">
+      Korean cuisine is heavily meat-focused, which turned out to not be for me. I gave it a real shot — including octopus, which I did not enjoy. The cafés, on the other hand, were excellent.
+    </p>
 
     <div class="photo-grid hero-pair row-tall">
       <div class="photo-block">
-        <img src="converted/IMG_3338.jpg" alt="Korean BBQ dinner" />
+        <img src="converted/IMG_3338.jpg" alt="Korean BBQ with octopus" />
       </div>
       <div class="photo-block">
         <img src="converted/IMG_3353.jpg" alt="Night street scene" />
       </div>
     </div>
-    <p class="caption">Korean BBQ — grilled galbi with banchan and soju &nbsp;·&nbsp; The streets at night.</p>
+    <p class="caption">Korean BBQ — that's octopus on the grill. Tried it. Not a fan. &nbsp;·&nbsp; Out in Songtan at night.</p>
 
     <div class="section-spacer"></div>
 
@@ -358,46 +379,67 @@
         <img src="converted/IMG_3348.jpg" alt="With colleagues at the café" />
       </div>
     </div>
-    <p class="caption">Korea takes its cafés seriously.</p>
-
-    <div class="section-spacer"></div>
-
-    <div class="photo-grid single">
-      <div class="photo-block auto">
-        <video src="converted/IMG_3358.mp4" controls playsinline></video>
-      </div>
-    </div>
+    <p class="caption">The cafés were a different story — Korea takes them seriously.</p>
   </section>
 
 
-  <!-- CHAPTER 4: THE SED -->
+  <!-- CHAPTER 5: THE SED -->
   <section class="chapter">
     <div class="chapter-header">
-      <div class="chapter-number">Chapter Four</div>
+      <div class="chapter-number">Chapter Five</div>
       <h2 class="chapter-title">The Work</h2>
-      <p class="chapter-subtitle">Korea Air and Space Operations Center</p>
+      <p class="chapter-subtitle">Korea Air and Space Operations Center · The SED</p>
     </div>
+
+    <p class="body-text">
+      Working in a coalition environment alongside the Republic of Korea Air Force comes with its own unique set of challenges. It was one of the more interesting parts of the assignment.
+    </p>
 
     <div class="photo-grid single">
       <div class="photo-block auto">
         <img src="converted/IMG_3346.JPG" alt="Group photo at the Korea Air and Space Operations Center" />
       </div>
-      <p class="caption">The Korea Air and Space Operations Center — the reason for the trip.</p>
+      <p class="caption">The Korea Air and Space Operations Center.</p>
     </div>
+
+    <div class="section-spacer"></div>
+
+    <p class="body-text">
+      After work, we had the Phantom Bar — a bar inside the SED with beer pong and a pool table. I am terrible at pool. We held our victory party here at the end of the TDY.
+    </p>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
+        <video src="converted/IMG_3358.mp4" controls playsinline></video>
+      </div>
+      <p class="caption">The Phantom Bar, SED.</p>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block">
+        <video src="converted/IMG_3423.mp4" controls playsinline></video>
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3452.jpg" alt="Victory party ice cream — Baskin Robbins 27 Cubes" />
+      </div>
+    </div>
+    <p class="caption">Mr. Brightside in a private karaoke room with the SED crew &nbsp;·&nbsp; Victory party night — Korea's Baskin Robbins sells ice cream shaped like a Rubik's cube, 27 flavors in one block.</p>
   </section>
 
 
-  <!-- CHAPTER 5: SEOUL — GYEONGBOKGUNG -->
+  <!-- CHAPTER 6: SEOUL — GYEONGBOKGUNG -->
   <section class="chapter">
     <div class="chapter-header">
-      <div class="chapter-number">Chapter Five</div>
+      <div class="chapter-number">Chapter Six</div>
       <h2 class="chapter-title">Seoul</h2>
       <p class="chapter-subtitle">Gyeongbokgung Palace</p>
     </div>
 
-    <p style="text-align:center; max-width:540px; margin:0 auto 3rem; padding:0 1rem; font-size:0.95rem; color:var(--muted); font-style:italic;">
+    <p class="body-text">
       Built in 1395, Gyeongbokgung was the primary palace of the Joseon dynasty.
-      I happened to arrive during the Royal Guard Changing Ceremony.
+      I arrived during the Royal Guard Changing Ceremony.
     </p>
 
     <div class="photo-grid single">
@@ -417,7 +459,7 @@
         <img src="converted/IMG_3381.jpg" alt="Full view of the ceremony with Bugaksan mountain" />
       </div>
     </div>
-    <p class="caption">The Royal Guard Changing Ceremony — held in the main courtyard with Bugaksan mountain behind.</p>
+    <p class="caption">The Royal Guard Changing Ceremony in the main courtyard, with Bugaksan mountain in the background.</p>
 
     <div class="section-spacer"></div>
 
@@ -429,14 +471,14 @@
         <img src="converted/IMG_3389.jpg" alt="Hyangwonjeong Pavilion on the pond" />
       </div>
     </div>
-    <p class="caption">Gyeonghoeru Pavilion &nbsp;·&nbsp; Hyangwonjeong Pavilion — a small island in the palace gardens.</p>
+    <p class="caption">Gyeonghoeru Pavilion &nbsp;·&nbsp; Hyangwonjeong — a small pavilion on an island in the palace gardens.</p>
   </section>
 
 
-  <!-- CHAPTER 6: NAMSAN -->
+  <!-- CHAPTER 7: NAMSAN -->
   <section class="chapter">
     <div class="chapter-header">
-      <div class="chapter-number">Chapter Six</div>
+      <div class="chapter-number">Chapter Seven</div>
       <h2 class="chapter-title">Namsan Mountain</h2>
       <p class="chapter-subtitle">N Seoul Tower · The View from Above</p>
     </div>
@@ -461,17 +503,18 @@
   </section>
 
 
-  <!-- CHAPTER 7: WAR MEMORIAL -->
+  <!-- CHAPTER 8: WAR MEMORIAL -->
   <section class="chapter">
     <div class="chapter-header">
-      <div class="chapter-number">Chapter Seven</div>
+      <div class="chapter-number">Chapter Eight</div>
       <h2 class="chapter-title">War Memorial of Korea</h2>
       <p class="chapter-subtitle">Seoul · Yongsan</p>
     </div>
 
-    <p style="text-align:center; max-width:540px; margin:0 auto 3rem; padding:0 1rem; font-size:0.95rem; color:var(--muted); font-style:italic;">
-      As an Air Force officer stationed at a base that owes its existence to the Korean War,
-      this one felt personal. Over 36,000 Americans died here between 1950 and 1953.
+    <p class="body-text">
+      As an Air Force officer stationed at a base that exists because of the Korean War,
+      this was a stop I had to make. The history here is genuinely fascinating — the equipment,
+      the scale of the conflict, and how recent it all was.
     </p>
 
     <div class="photo-grid two-col row-medium">
@@ -482,7 +525,7 @@
         <img src="converted/IMG_3406.jpg" alt="Brothers Statue" />
       </div>
     </div>
-    <p class="caption">The memorial tower &nbsp;·&nbsp; The Brothers Statue — an ROK and North Korean soldier embracing, symbolizing the hope for reunification.</p>
+    <p class="caption">The memorial tower &nbsp;·&nbsp; The Brothers Statue — an ROK and North Korean soldier embracing, representing the hope for reunification.</p>
 
     <div class="section-spacer"></div>
 
@@ -494,7 +537,7 @@
         <img src="converted/IMG_3410.jpg" alt="Missile and weapons display" />
       </div>
     </div>
-    <p class="caption">The outdoor equipment display — decades of hardware, with N Seoul Tower visible in the background.</p>
+    <p class="caption">Decades of hardware on display outside — N Seoul Tower visible in the background.</p>
 
     <div class="section-spacer"></div>
 
@@ -506,46 +549,64 @@
         <img src="converted/IMG_3419.jpg" alt="Korean War era rifles" />
       </div>
     </div>
-    <p class="caption">A full-scale replica of the Geobukseon (Turtle Ship), Admiral Yi Sun-sin's ironclad warship from 1592 &nbsp;·&nbsp; Korean War-era rifles.</p>
+    <p class="caption">A full-scale replica of Admiral Yi Sun-sin's Turtle Ship (1592) &nbsp;·&nbsp; Korean War-era rifles.</p>
+  </section>
 
-    <div class="section-spacer"></div>
+
+  <!-- CHAPTER 9: DAEGU -->
+  <section class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-number">Chapter Nine</div>
+      <h2 class="chapter-title">Daegu</h2>
+      <p class="chapter-subtitle">South Korea's Fourth-Largest City</p>
+    </div>
+
+    <p class="body-text">
+      We took a trip down to Daegu for a night out. It ended up being one of the highlights of the whole TDY.
+    </p>
 
     <div class="photo-grid two-col row-medium">
-      <div class="photo-block">
-        <video src="converted/IMG_3423.mp4" controls playsinline></video>
-      </div>
       <div class="photo-block">
         <video src="converted/IMG_3434.mp4" controls playsinline></video>
       </div>
-    </div>
-
-    <div class="section-spacer"></div>
-
-    <div class="photo-grid two-col row-medium">
       <div class="photo-block">
         <video src="converted/IMG_3436.mp4" controls playsinline></video>
       </div>
-      <div class="photo-block">
+    </div>
+    <p class="caption">Downtown Daegu &nbsp;·&nbsp; Korean karaoke — a local guy was already singing when we got there. We ordered Somek (soju + beer), sang Country Roads, and the Koreans loved it.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid single">
+      <div class="photo-block auto">
         <video src="converted/IMG_3441.mp4" controls playsinline></video>
       </div>
+      <p class="caption">Out in Daegu.</p>
     </div>
   </section>
 
 
-  <!-- CHAPTER 8: SEOUL — AROUND THE CITY -->
+  <!-- CHAPTER 10: SEOUL SOLO -->
   <section class="chapter">
     <div class="chapter-header">
-      <div class="chapter-number">Chapter Eight</div>
-      <h2 class="chapter-title">Seoul</h2>
-      <p class="chapter-subtitle">Dongdaemun · Myeongdong · Around the City</p>
+      <div class="chapter-number">Chapter Ten</div>
+      <h2 class="chapter-title">Seoul, On My Own</h2>
+      <p class="chapter-subtitle">Solo exploration at the end of the TDY</p>
     </div>
 
-    <div class="photo-grid single">
-      <div class="photo-block auto">
-        <img src="converted/IMG_3452.jpg" alt="Baskin Robbins 27 Cubes ice cream" />
+    <p class="body-text">
+      At the tail end of the trip I had a few days to explore Seoul by myself. No agenda — just walking.
+    </p>
+
+    <div class="photo-grid two-col row-medium">
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3458.jpg" alt="Statue of a Korean general" />
       </div>
-      <p class="caption">Korea's Baskin Robbins sells ice cream shaped like a Rubik's cube — 27 individual flavors in one block.</p>
+      <div class="photo-block">
+        <img src="converted/IMG_3462.jpg" alt="Sunset over Seoul" />
+      </div>
     </div>
+    <p class="caption">A monument to Korean military history &nbsp;·&nbsp; Sunset over the city.</p>
 
     <div class="section-spacer"></div>
 
@@ -557,7 +618,22 @@
         <img src="converted/IMG_3460.jpg" alt="Dongdaemun Design Plaza" />
       </div>
     </div>
-    <p class="caption">Modern Seoul &nbsp;·&nbsp; Dongdaemun Design Plaza — designed by Zaha Hadid, opened 2014.</p>
+    <p class="caption">Modern Seoul &nbsp;·&nbsp; Dongdaemun Design Plaza, designed by Zaha Hadid.</p>
+
+    <div class="section-spacer"></div>
+
+    <div class="photo-grid three-col row-medium">
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3470.jpg" alt="Stone guardian lion" />
+      </div>
+      <div class="photo-block portrait">
+        <img src="converted/IMG_3472.jpg" alt="Historical figure statue" />
+      </div>
+      <div class="photo-block">
+        <img src="converted/IMG_3480.jpg" alt="Traditional nongak performance" />
+      </div>
+    </div>
+    <p class="caption">Stone haetae guardian &nbsp;·&nbsp; A historical monument &nbsp;·&nbsp; Traditional nongak performance in the square.</p>
 
     <div class="section-spacer"></div>
 
@@ -570,41 +646,6 @@
       </div>
     </div>
     <p class="caption">Myeongdong Cathedral — Seoul's oldest Catholic church, built 1898 &nbsp;·&nbsp; Myeongdong at night.</p>
-  </section>
-
-
-  <!-- CHAPTER 9: DAEGU -->
-  <section class="chapter">
-    <div class="chapter-header">
-      <div class="chapter-number">Chapter Nine</div>
-      <h2 class="chapter-title">Daegu</h2>
-      <p class="chapter-subtitle">South Korea's Fourth-Largest City</p>
-    </div>
-
-    <div class="photo-grid two-col row-medium">
-      <div class="photo-block portrait">
-        <img src="converted/IMG_3458.jpg" alt="Statue of a Korean general" />
-      </div>
-      <div class="photo-block">
-        <img src="converted/IMG_3462.jpg" alt="Sunset over Daegu" />
-      </div>
-    </div>
-    <p class="caption">A statue honoring Korean military history &nbsp;·&nbsp; Sunset over Daegu.</p>
-
-    <div class="section-spacer"></div>
-
-    <div class="photo-grid three-col row-medium">
-      <div class="photo-block portrait">
-        <img src="converted/IMG_3470.jpg" alt="Stone lion at a historical site" />
-      </div>
-      <div class="photo-block portrait">
-        <img src="converted/IMG_3472.jpg" alt="Statue of a historical figure" />
-      </div>
-      <div class="photo-block">
-        <img src="converted/IMG_3480.jpg" alt="Traditional nongak performance" />
-      </div>
-    </div>
-    <p class="caption">A stone haetae guardian &nbsp;·&nbsp; A historical monument &nbsp;·&nbsp; Traditional nongak performance in the city square.</p>
   </section>
 
 
